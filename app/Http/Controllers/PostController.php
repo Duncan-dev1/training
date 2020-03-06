@@ -24,6 +24,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        if(request('tag')){
+            $posts=Tag::where('name',request('tag'))->firstOrFail()->posts;
+        }else{
+            $articles=Article::latest()->get();
+        }
         $posts= Post::orderBy('created_at','desc')->get();
         return view('posts.index')->with('posts',$posts); 
     }

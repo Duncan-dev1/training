@@ -13,7 +13,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.createUser');
+        $users= User ::orderBy('created_at','desc')->get();
+        return view('users.index')->with('users',$users); 
     }
 
     /**

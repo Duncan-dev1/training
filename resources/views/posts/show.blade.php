@@ -5,6 +5,11 @@
    <img style ="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
   <div>
      {!!$post->body!!}
+     <p style="margin-top:2">
+        @foreach($post->tags as $tag)
+     <a href="/posts?tag={{$tag->name}}">{{$tag->name}}</a>
+     @endforeach
+     </p>
   </div>
    <hr>
    <small>Written on{{$post->created_at}}</small>
